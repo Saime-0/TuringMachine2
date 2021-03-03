@@ -1,9 +1,11 @@
 package com.company;
 
+import java.util.LinkedList;
+
 public class MachineLogic {
 
     public static void main(String[] args) {
-
+        LinkedList<Integer> list = new LinkedList<>();
     }
 
     public static int readRegister(int id) {
@@ -16,4 +18,6 @@ public class MachineLogic {
 
         return reg.register;
     }
+
+
 }
