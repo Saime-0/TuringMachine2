@@ -4,8 +4,8 @@ public class CellTape {
     public static Cell head;
     private static int size = 0;
 
-    public static void append() {CellTape.append(-1);}
-    public static void append(int data) {
+    public static void append() {CellTape.append('_');}
+    public static void append(char data) {
         if (head == null) {
             head = new Cell(data);
             return;
@@ -19,8 +19,8 @@ public class CellTape {
         size = size + 1;
     }
 
-    public static void prepend() {CellTape.prepend(-1);}
-    public static void prepend(int data) {
+    public static void prepend() {CellTape.prepend('_');}
+    public static void prepend(char data) {
         Cell newHead = new Cell(data);
         if (head != null) {
             newHead.next = head;
@@ -38,7 +38,7 @@ public class CellTape {
         return current.data;
     }
 
-    public static void set(int id, int data) {
+    public static void set(int id, char data) {
         Cell current = head;
         for (int i = 0; i < id; i++) {
             current = current.next;

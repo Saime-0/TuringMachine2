@@ -3,9 +3,9 @@ package com.company;
 public class Cell {
     public Cell next;
     public Cell previous;
-    public int data;
+    public char data;
 
-    public Cell(int data) {
+    public Cell(char data) {
         this.data = data;
     }
 }
