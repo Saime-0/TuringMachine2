@@ -51,15 +51,28 @@ public class CellTape {
         return size;
     }
 
-    public static void print() {
+//    public static void printArray() {
+//        StringBuilder str = new StringBuilder();
+//        if (head != null) str.append("[").append(head.data);
+//        Cell current = head;
+//        while (current.next != null) {
+//            current = current.next;
+//            str.append(", ").append(current.data);
+//        }
+//        str.append("]");
+//        System.out.println(str);
+//    }
+
+    public static String returnString() {
+        Object o;
         StringBuilder str = new StringBuilder();
-        if (head != null) str.append("[").append(head.data);
+        if (head != null) str.append(head.data);
         Cell current = head;
         while (current.next != null) {
             current = current.next;
-            str.append(", ").append(current.data);
+            str.append(current.data);
         }
-        str.append("]");
-        System.out.println(str);
+
+        return str.toString();
     }
 }
