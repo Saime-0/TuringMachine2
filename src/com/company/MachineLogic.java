@@ -1,24 +1,26 @@
 package com.company;
 
-import java.util.LinkedList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class MachineLogic {
 
     public static void main(String[] args) {
+//        System.out.println((int) ('z'-'0'-39));
         System.out.println("Ведите ленту со значениями: \nПример: 01001_");
         Scanner scanner = new Scanner(System.in);
         char[] tape = scanner.nextLine().toCharArray();
         for (int i = 0; i < tape.length; i++) CellTape.append(tape[i]);
 
 
-        System.out.println("Введите значения для регистров в форме TRMG,TRMG,TRMG;TRMG,TRMG,TRMG: [Trigger] (0,1),  [Replace] (0,1),  [Move] ('<','>'), [reGister] (1, 2, 3, ..., n)\nПример: 01>0,10>0,__s1;00<1,11<1,__<1;");
+        System.out.println("Введите значения для регистров в форме <TRMG,TRMG,TRMG;TRMG,TRMG,TRMG>: [Trigger] (0,1),  [Replace] (0,1),  [Move] ('<','>'), [reGister] (1, 2, 3, ..., n)\nПример: 01>0,10>0,__s1;00<1,11<1,__<1;");
+        System.out.println("Допускаемые значения регистров: 0-9, a-z");
         for (String reg : scanner.nextLine().split(";")) {
             RegisterTable.add(reg.split(","));
         }
 
         int next_reg = 0;
-        while (next_reg != -1) {
+        while (next_reg >= 0) {
             next_reg = readRegister(next_reg);
         }
     }
@@ -35,6 +37,7 @@ public class MachineLogic {
                 char replace = char_param[1]; // заменяет на реплейс (0,1) UPD: ('0', '1', ' ')
                 char move = char_param[2]; // передвигает сканер ('<', '>')
                 int register = char_param[3] - '0'; // потом переходит в регистр (1, 2, 3, .., n)
+                if (register >= 'a' && register <= 'z') register -= 39;
 
                 // normal features
                 ScanningHead.cell.data = replace;
@@ -54,6 +57,7 @@ public class MachineLogic {
         }
         return id;
     }
+
 
 
 }
