@@ -42,13 +42,19 @@ public class MachineLogic {
                 // normal features
                 ScanningHead.cell.data = replace;
                 String where = "to stay";
-//                if (move == '<') where = "to left";
-//                else if (move == '>') where = " to right";
-//                System.out.printf("Q%d -> trigger - %c, replaced by %c, %s, next register Q%d, tape == %s\n", id, trigger, replace, where, register, CellTape.returnString());
-                if (!last_out.equals(CellTape.returnString())) {
-                    System.out.printf("Changed: %s\n", CellTape.returnString());
-                    last_out = CellTape.returnString();
+                if (move == '<') where = "to left";
+                else if (move == '>') where = "to right";
+                else if (move == 's') where = "to stay";
+                else if (move == '.') {
+                    System.out.println("Конец программы.");
+                    System.exit(0);
                 }
+                System.out.printf("Q%d -> trigger - %c, replaced by %c, %s, next reg Q%d, tape = %s\n", id, trigger, replace, where, register, CellTape.returnString());
+
+//                if (!last_out.equals(CellTape.returnString())) {
+//                    System.out.printf("Changed: %s\n", CellTape.returnString());
+//                    last_out = CellTape.returnString();
+//                }
 
                 if (move == '<') ScanningHead.toLeft();
                 else if (move == '>') ScanningHead.toRight();
